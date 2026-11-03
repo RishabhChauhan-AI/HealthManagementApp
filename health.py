@@ -11,7 +11,10 @@ import io
 load_dotenv()
 
 # Get API key
-api_key = os.getenv("GENAI_API_KEY")
+api_key = st.secrets.get(
+    "GENAI_API_KEY",
+    os.getenv("GENAI_API_KEY")
+)
 
 if not api_key:
     st.error("Gemini API key not found. Check your .env file.")
